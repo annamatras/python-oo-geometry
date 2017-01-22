@@ -486,7 +486,7 @@ def read_digit_from_input(label):
 
     Args: label
     Return:
-        float: data from user input
+        digit: data from user input
     """
     a = 0
     is_valid = False
