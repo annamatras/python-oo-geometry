@@ -24,7 +24,7 @@ def main():
             shape = shape_type.from_input()
             shapes.add_shape(shape)
         elif option == "2":
-            shapes.get_shapes_table()
+            print(shapes.get_shapes_table())
         elif option == "3":
             largest_shape = shapes.get_largest_shape_by_perimeter()
             print("Largest shape is %s with id: %s" % (largest_shape, largest_shape.idx))

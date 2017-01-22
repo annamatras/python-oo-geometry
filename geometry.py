@@ -168,10 +168,14 @@ class Triangle(Shape):
 
     @classmethod
     def from_input(cls):
-        a = read_digit_from_input("Set a: ")
-        b = read_digit_from_input("Set b: ")
-        c = read_digit_from_input("Set c: ")
-        return Triangle(a, b, c)
+        while True:
+            a = read_digit_from_input("Set a: ")
+            b = read_digit_from_input("Set b: ")
+            c = read_digit_from_input("Set c: ")
+            if a+b > c and a+c > b and b+c > a:
+                return Triangle(a, b, c)
+            else:
+                print("There is no triangle with that side value. Try again!")
 
 
 class EquilateralTriangle(Triangle):
@@ -350,9 +354,7 @@ class ShapeList:
     """
     def __init__(self):
         """
-        Initialize object.
-        Args:
-            shapes: list of shapes
+        Initialize objects list.
         """
         self.shapes = []
 
@@ -372,12 +374,10 @@ class ShapeList:
 
     def get_shapes_table(self):
         """
-        Method prints table to console.
-        Return:
-            str: table
+        This method returns shapes list as string formatted into table.
         """
-        table = ""
         title_list = ["id", "Class", "__str__", "Perimeter", "Perimeter formula", "Area", "Area formula"]
+        formated_table = ""
         len_for_col = []
         for title_iterator in range(len(title_list)):
             len_col = len(title_list[title_iterator])
@@ -393,42 +393,45 @@ class ShapeList:
         how_wide = 1
         for col_len in len_for_col:
             how_wide += col_len + 3
-        print('-' * how_wide)
+        formated_table += ('-' * how_wide)
+        formated_table += '\n'
 
         for title in title_list:
-            print("|", end="")
+            formated_table += "|"
             x = (len_for_col[title_list.index(title)])
-            print(("{: <" + str(x + 2) + "}").format(title), end="")
-        print("|")
-        print('-' * how_wide)
+            formated_table += (("{: <" + str(x + 2) + "}").format(title))
+        formated_table += "|"
+        formated_table += '\n'
+        formated_table += ('-' * how_wide)
+        formated_table += '\n'
 
         for shape in self.shapes:
-            print("|", end="")
+            formated_table += "|"
             x = len_for_col[0]
-            print(("{: <" + str(x + 2) + "}|").format(shape.idx), end="")
+            formated_table += ("{: <" + str(x + 2) + "}|").format(shape.idx)
             x = len_for_col[1]
-            print(("{: <" + str(x + 2) + "}|").format(type(shape).__name__), end="")
+            formated_table += ("{: <" + str(x + 2) + "}|").format(type(shape).__name__)
             x = len_for_col[2]
-            print(("{: <" + str(x + 2) + "}|").format(shape.__str__()), end="")
+            formated_table += ("{: <" + str(x + 2) + "}|").format(shape.__str__())
             x = len_for_col[3]
-            print(("{: <" + str(x + 2) + "}|").format(shape.get_perimeter()), end="")
+            formated_table += ("{: <" + str(x + 2) + "}|").format(shape.get_perimeter())
             x = len_for_col[4]
-            print(("{: <" + str(x + 2) + "}|").format(shape.get_perimeter_formula()), end="")
+            formated_table += ("{: <" + str(x + 2) + "}|").format(shape.get_perimeter_formula())
             x = len_for_col[5]
-            print(("{: <" + str(x + 2) + "}|").format(shape.get_area()), end="")
+            formated_table += ("{: <" + str(x + 2) + "}|").format(shape.get_area())
             x = len_for_col[6]
-            print(("{: <" + str(x + 2) + "}|").format(shape.get_area_formula()))
-        print('-' * how_wide)
-        return table
+            formated_table += ("{: <" + str(x + 2) + "}|").format(shape.get_area_formula())
+            formated_table += '\n'
+        formated_table += ('-' * how_wide)
+        return formated_table
 
     @staticmethod
     def get_data_len(shape):
         """
         Method returns length all of shape elements to build a proper table.
-
         Args: shape
         Returns:
-            list of elements lengths as int
+            list of elements lengths
         """
         elements_len = []
 
@@ -483,7 +486,7 @@ def read_digit_from_input(label):
 
     Args: label
     Return:
-        digit: data from user input
+        float: data from user input
     """
     a = 0
     is_valid = False
