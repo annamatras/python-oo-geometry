@@ -4,7 +4,6 @@ from geometry import *
 
 
 def main():
-
     shapes = ShapeList()  # object containing all shapes added by the user
     shapes_dict_unsorted = {"1": Square, "2": Circle, "3": Triangle, "4": EquilateralTriangle, "5": Rectangle,
                             "6": RegularPentagon}
@@ -44,13 +43,13 @@ def select_shape(shapes_dict):
     """
     Display all type of shape object for user.
 
-    Parameter: shapes_dict:
+    Args: shapes_dict
     Return:
         type of shape object
     """
     for k, v in shapes_dict.items():
         print('%s - %s' % (k, v.__name__))
-    choose = input("Select shape: ")
+    choose = input("Select number of shape: ")
     shape_type = shapes_dict[choose]
     return shape_type
 

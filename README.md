@@ -78,7 +78,7 @@ Returns formula for the area of the shape as a string.
 Returns formula for the perimeter of the shape.
 
 Why this methods should be class methods? Edit this readme and give answer below:  
-...........................
+Because this method will be always bound to the class it is attached to, and its first argument will be the class itself. Whether we call the method from the instance or the class, it passes the class as first argument.
 
 ### Circle Class
 This class represents circle shape.   

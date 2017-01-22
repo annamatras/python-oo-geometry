@@ -84,7 +84,17 @@ class Shape:
 
 
 class Circle(Shape):
+    """
+    This class represents circle object.
+    """
     def __init__(self, r):
+        """
+        Initialize object.
+        Args:
+            r: radius length
+        Returns:
+            None
+        """
         Shape.__init__(self)
         self.r = r
         if r < 0:
@@ -116,7 +126,19 @@ class Circle(Shape):
 
 
 class Triangle(Shape):
+    """
+    This class represents triangle object.
+    """
     def __init__(self, a, b, c):
+        """
+        Initialize object.
+        Args:
+            a: side length
+            b: side length
+            c: side length
+        Returns:
+            None
+        """
         Shape.__init__(self)
         self.a = a
         self.b = b
@@ -153,7 +175,17 @@ class Triangle(Shape):
 
 
 class EquilateralTriangle(Triangle):
+    """
+    This class represents equilateral triangle object. Inherits from Triangle class.
+    """
     def __init__(self, a):
+        """
+        Initialize object.
+        Args:
+            a: side length
+        Returns:
+            None
+        """
         Triangle.__init__(self, a, b=a, c=a)
         if a < 0:
             raise ValueError("Values of parameters can't be negative.")
@@ -185,7 +217,18 @@ class EquilateralTriangle(Triangle):
 
 
 class Rectangle(Shape):
+    """
+    This class represents rectangle object.
+    """
     def __init__(self, a, b):
+        """
+        Initialize object.
+        Args:
+            a: side length
+            b: side length
+        Returns:
+            None
+        """
         Shape.__init__(self)
         self.a = a
         self.b = b
@@ -219,8 +262,17 @@ class Rectangle(Shape):
 
 
 class Square(Rectangle):
-
+    """
+    This class represents square object. Inherits from Rectangle class.
+    """
     def __init__(self, a):
+        """
+        Initialize object.
+        Args:
+            a: side length
+        Returns:
+            None
+        """
         Rectangle.__init__(self, a, b=a)
         if a < 0:
             raise ValueError("Values of parameters can't be negative.")
@@ -251,7 +303,17 @@ class Square(Rectangle):
 
 
 class RegularPentagon(Shape):
+    """
+    This class represents regular pentagon object.
+    """
     def __init__(self, a):
+        """
+        Initialize object.
+        Args:
+            a: side length
+        Returns:
+            None
+        """
         Shape.__init__(self)
         self.a = a
         if a < 0:
@@ -283,14 +345,22 @@ class RegularPentagon(Shape):
 
 
 class ShapeList:
+    """
+    This class represents all shapes objects.
+    """
     def __init__(self):
+        """
+        Initialize object.
+        Args:
+            shapes: list of shapes
+        """
         self.shapes = []
 
     def add_shape(self, shape):
         """
         Method adds new shape object to list of shapes.
 
-        Parameter: shape
+        Args: shape
         Raises:
             TypeError: If shape's hasn't Shape class as it's ancestor.
         """
@@ -303,7 +373,6 @@ class ShapeList:
     def get_shapes_table(self):
         """
         Method prints table to console.
-
         Return:
             str: table
         """
@@ -357,7 +426,7 @@ class ShapeList:
         """
         Method returns length all of shape elements to build a proper table.
 
-        Parameter: shape
+        Args: shape
         Returns:
             list of elements lengths as int
         """
@@ -386,7 +455,7 @@ class ShapeList:
         Checks for shape with larges area.
 
         Return:
-            shape with largest area
+            object with largest area
         """
         largest_area = self.shapes[0]
         for figure in self.shapes:
@@ -399,7 +468,7 @@ class ShapeList:
         Checks for shape with larges perimeter.
 
         Return:
-            shape with largest perimeter
+            object with largest perimeter
         """
         largest_perimeter = self.shapes[0]
         for figure in self.shapes:
@@ -410,11 +479,11 @@ class ShapeList:
 
 def read_digit_from_input(label):
     """
-    Method read input from user and validate it.
+    Method reads input from user and validates it.
 
-    Parameter: label
+    Args: label
     Return:
-        digit: validate user input
+        digit: data from user input
     """
     a = 0
     is_valid = False
